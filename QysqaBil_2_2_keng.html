@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="kk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QysqaBil 2.2</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f7ff;color:#25253d}.app{display:flex;min-height:100vh}.side{width:235px;background:linear-gradient(#292758,#40367d);color:#fff;padding:25px 15px;position:fixed;inset:0 auto 0 0;overflow:auto}.logo{font-size:31px;font-weight:800;padding:5px 10px}.logo span{color:#ffd343}.tagline{padding:0 10px;line-height:1.5;color:#ddd}.nav{margin-top:25px}.nav button{width:100%;border:0;background:transparent;color:#fff;text-align:left;padding:14px;border-radius:11px;margin:3px 0;font-size:16px;cursor:pointer}.nav button:hover,.nav button.active{background:#6255d9}main{margin-left:235px;padding:25px 4%;width:calc(100% - 235px)}.top{display:flex;justify-content:space-between;gap:12px;align-items:center}.search{background:#ebeafd;padding:13px 20px;border-radius:22px;min-width:300px;border:2px solid transparent;font-size:16px;color:#25253d;outline:none}.search:focus{border-color:#635bff;background:#fff}.search-results{display:none;background:#fff;border-radius:14px;padding:10px;margin-top:8px;max-width:500px;box-shadow:0 5px 20px #0002}.search-results button{display:block;width:100%;padding:10px;background:#fff;color:#222;border:0;text-align:left;border-radius:8px;cursor:pointer}.search-results button:hover{background:#f0efff}.pill{background:#fff;padding:12px 16px;border-radius:22px;font-weight:bold}.page{display:none}.page.active{display:block}.hero{margin:22px 0;padding:38px;border-radius:25px;background:linear-gradient(120deg,#635bff,#2878e8);color:#fff;display:flex;justify-content:space-between;align-items:center}.hero h1{font-size:42px;margin:0}.hero p{font-size:18px;max-width:600px}.art{font-size:90px}.primary,.purple{border:0;padding:13px 22px;border-radius:20px;font-size:15px;font-weight:bold;cursor:pointer}.primary{background:#ffd142;color:#25253d}.purple{background:#635bff;color:#fff}.subjects{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.subject,.lesson-card{border:0;background:#fff;padding:20px;border-radius:18px;text-align:left;cursor:pointer;font-size:16px;box-shadow:0 3px 15px #0000000c;color:#25253d}.subject:hover,.lesson-card:hover{transform:translateY(-3px)}.subject b{font-size:32px;display:block;margin-bottom:8px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}.panel{background:#fff;border-radius:20px;padding:22px;box-shadow:0 3px 15px #0000000c}.answers button{display:block;width:100%;margin:8px 0;padding:13px;text-align:left;border:2px solid #d9d9e8;border-radius:9px;background:#fff;color:#111!important;font-size:16px;font-weight:600;cursor:pointer}.answers button:hover{background:#efedff;border-color:#635bff}.progress{height:15px;background:#e8e7f3;border-radius:10px;overflow:hidden}.progress div{height:100%;width:70%;background:#25b77b}.list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.lesson-card h3{margin:8px 0}.lesson-card p{color:#666}.badge{display:inline-block;background:#eeeaff;color:#4e46cc;padding:5px 10px;border-radius:12px;font-size:13px;font-weight:bold}.question{max-width:750px;margin:auto}.flash{max-width:550px;margin:30px auto;text-align:center;padding:50px;font-size:24px;min-height:230px;display:flex;flex-direction:column;justify-content:center}.rank{display:flex;justify-content:space-between;padding:15px;border-bottom:1px solid #eee}.profile{max-width:600px;margin:auto}.input{width:100%;padding:12px;border:1px solid #ddd;border-radius:9px;margin:8px 0}.modal{display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;z-index:5}.modal-content{background:#fff;padding:30px;border-radius:20px;max-width:600px;width:90%;color:#222}.modal-content button{margin:5px}.count{color:#635bff;font-weight:bold}
+@media(max-width:850px){.side{width:70px;padding:12px 6px}.logo{font-size:0}.logo:after{content:"Q";font-size:28px}.tagline{display:none}.nav button{font-size:0;text-align:center}.nav button::first-letter{font-size:20px}main{margin-left:70px;width:calc(100% - 70px)}.subjects{grid-template-columns:repeat(2,1fr)}.cards,.list{grid-template-columns:1fr}}@media(max-width:500px){main{padding:15px}.top{flex-wrap:wrap}.search{min-width:100%;width:100%}.hero{padding:25px}.hero h1{font-size:30px}.art{display:none}.subjects{grid-template-columns:1fr}}
+</style></head><body><div class="app">
+<aside class="side"><div class="logo">Qysqa<span>Bil</span></div><p class="tagline">Күніне 3 минут —<br>күн сайын жаңа білім!</p><div class="nav">
+<button class="active" onclick="go('home',this)">🏠 Басты бет</button><button onclick="go('lessons',this)">📚 Сабақтар</button><button onclick="go('tests',this)">📝 Тесттер</button><button onclick="go('cards',this)">🃏 Карточкалар</button><button onclick="go('rating',this)">🏆 Рейтинг</button><button onclick="go('progress',this)">📊 Менің прогресім</button><button onclick="go('profile',this)">👤 Профиль</button></div></aside>
+<main><div class="top"><div><input class="search" id="search" placeholder="🔍 Сабақ немесе тақырып іздеу..." oninput="searchLessons()"><div class="search-results" id="searchResults"></div></div><div class="pill">🔥 5 күн қатарынан &nbsp; ⭐ <span class="points">125</span> ұпай</div></div>
+<section id="home" class="page active"><div class="hero"><div><h1>QysqaBil 2.2</h1><p>Күніне 3 минут — күн сайын жаңа білім! Қысқа сабақ оқып, тапсырма орында және ұпай жина.</p><button class="primary" onclick="go('lessons')">▶ Сабақты бастау</button></div><div class="art">📚💡</div></div><h2>📖 Пәндер</h2><div class="subjects"><button class="subject" onclick="filterSubject('Информатика')"><b>💻</b>Информатика<br><small>8 сабақ</small></button><button class="subject" onclick="filterSubject('Математика')"><b>➗</b>Математика<br><small>7 сабақ</small></button><button class="subject" onclick="filterSubject('Қазақ тілі')"><b>📖</b>Қазақ тілі<br><small>6 сабақ</small></button><button class="subject" onclick="filterSubject('География')"><b>🌍</b>География<br><small>5 сабақ</small></button><button class="subject" onclick="filterSubject('Жаратылыстану')"><b>🧪</b>Жаратылыстану<br><small>5 сабақ</small></button></div></section>
+<section id="lessons" class="page"><h1>📚 Сабақтар</h1><p>Барлығы <span class="count" id="lessonCount"></span> қысқа сабақ. Сабақты басып ашыңыз.</p><div class="list" id="lessonList"></div></section>
+<section id="tests" class="page"><h1>📝 Тесттер</h1><p>Әр пән бойынша біліміңізді тексеріңіз.</p><div class="panel question"><h3 id="qtitle"></h3><p id="question"></p><div class="answers" id="answers"></div><p id="testResult"></p><button class="purple" onclick="nextQuestion()">Келесі сұрақ →</button><p><b>Нәтиже:</b> <span id="score">0</span> дұрыс жауап</p></div></section>
+<section id="cards" class="page"><h1>🃏 Білім карточкалары</h1><div class="panel flash" id="flash"></div></section>
+<section id="rating" class="page"><h1>🏆 Рейтинг</h1><div class="panel"><div class="rank"><b>🥇 Айдана</b><span>340 ⭐</span></div><div class="rank"><b>🥈 Данияр</b><span>285 ⭐</span></div><div class="rank"><b>🥉 Аружан</b><span>210 ⭐</span></div><div class="rank"><b>4. Сен</b><span class="points">125</span> ⭐</div></div></section>
+<section id="progress" class="page"><h1>📊 Менің прогресім</h1><div class="cards"><div class="panel"><h2 class="done">24</h2><p>Аяқталған сабақтар</p></div><div class="panel"><h2 class="points">125</h2><p>Жиналған ұпай</p></div><div class="panel"><h2>92%</h2><p>Дұрыс жауаптар</p></div></div><div class="panel" style="margin-top:20px"><h3>Деңгей: Білгір</h3><div class="progress"><div></div></div><p>Келесі деңгейге дейін 30 ұпай қалды.</p></div></section>
+<section id="profile" class="page"><h1>👤 Менің профилім</h1><div class="panel profile"><h2>👩 Ақұлпан</h2><p>Деңгей: <b>Білгір ⭐</b></p><label>Атыңыз</label><input class="input" value="Ақұлпан"><label>Мақсат</label><input class="input" value="Күніне 1 қысқа сабақ оқу"><button class="purple" onclick="alert('Өзгерістер сақталды!')">Сақтау</button></div></section>
+</main></div>
+<div class="modal" id="modal"><div class="modal-content"><h2 id="mtitle"></h2><p id="mtext"></p><button class="purple" onclick="finishLesson()">Сабақты аяқтадым ✓</button><button onclick="closeModal()">Жабу</button></div></div>
+<script>
+let lessons=[
+['💻','Информатика','Жасанды интеллект дегеніміз не?','Жасанды интеллект — компьютердің ақпаратты талдап, үйреніп және шешім қабылдауына мүмкіндік беретін технология.'],
+['🌐','Информатика','Компьютерлік желі','Компьютерлік желі — бірнеше құрылғының өзара байланысып, ақпарат алмасуына мүмкіндік беретін жүйе.'],
+['🖥️','Информатика','Компьютердің құрылғылары','Компьютер негізгі және қосымша құрылғылардан тұрады: процессор, монитор, пернетақта және тінтуір.'],
+['🔐','Информатика','Киберқауіпсіздік','Киберқауіпсіздік — компьютер мен жеке ақпаратты зиянды әрекеттерден қорғау.'],
+['🤖','Информатика','Алгоритм дегеніміз не?','Алгоритм — белгілі бір тапсырманы орындауға арналған реттелген әрекеттер тізбегі.'],
+['📊','Информатика','Деректер дегеніміз не?','Деректер — сақтау, өңдеу және талдау үшін қолданылатын ақпарат.'],
+['🌍','Информатика','Интернет қалай жұмыс істейді?','Интернет — әлемдегі көптеген компьютерлік желілерді біріктіретін жүйе.'],
+['📱','Информатика','Смартфон технологиялары','Смартфон — байланыс жасауға және түрлі бағдарламаларды пайдалануға арналған ақылды құрылғы.'],
+['➗','Математика','Пайыз дегеніміз не?','Пайыз — санның жүзден бір бөлігі. Мысалы, 100 санының 25%-ы 25-ке тең.'],
+['✖️','Математика','Көбейту','Көбейту — бірдей сандарды бірнеше рет қосудың қысқаша түрі.'],
+['➕','Математика','Бөлшектер','Бөлшек — бүтіннің бір немесе бірнеше бөлігін көрсететін сан.'],
+['📐','Математика','Үшбұрыш','Үшбұрыш — үш қабырғасы және үш бұрышы бар геометриялық фигура.'],
+['📏','Математика','Периметр','Периметр — фигураның барлық қабырғаларының ұзындықтарының қосындысы.'],
+['📈','Математика','Координаталар','Координаталар жазықтықтағы нүктенің орнын анықтауға көмектеседі.'],
+['🔢','Математика','Жұп және тақ сандар','Жұп сандар 2-ге қалдықсыз бөлінеді, ал тақ сандар бөлінбейді.'],
+['📖','Қазақ тілі','Сөйлем дегеніміз не?','Сөйлем — аяқталған ойды білдіретін сөздер тобы.'],
+['🔤','Қазақ тілі','Зат есім','Зат есім — заттың, адамның немесе құбылыстың атын білдіретін сөз табы.'],
+['✏️','Қазақ тілі','Сын есім','Сын есім заттың сынын, сапасын және қасиетін білдіреді.'],
+['🗣️','Қазақ тілі','Етістік','Етістік — заттың қимылын немесе іс-әрекетін білдіретін сөз табы.'],
+['🔠','Қазақ тілі','Дыбыс пен әріп','Дыбыс — естілетін тілдік бірлік, ал әріп — дыбыстың жазбаша таңбасы.'],
+['📝','Қазақ тілі','Мәтін','Мәтін — белгілі бір тақырыпқа байланысты бірнеше сөйлемнің байланысы.'],
+['🌍','География','Материктер','Жер шарында алты материк бар: Еуразия, Африка, Солтүстік Америка, Оңтүстік Америка, Аустралия және Антарктида.'],
+['🧭','География','Карта дегеніміз не?','Карта — Жер бетінің немесе оның бөліктерінің кішірейтілген бейнесі.'],
+['☀️','География','Ауа райы','Ауа райы — белгілі бір жердегі атмосфераның қысқа уақыттағы жағдайы.'],
+['🌊','География','Мұхиттар','Мұхит — Жер шарындағы ең үлкен су айдыны.'],
+['🏔️','География','Таулар мен жазықтар','Жер бедері таулар, жазықтар және басқа да табиғи пішіндерден тұрады.'],
+['🧪','Жаратылыстану','Заттың күйлері','Зат қатты, сұйық және газ күйінде болады.'],
+['🌱','Жаратылыстану','Өсімдіктер','Өсімдіктер күн сәулесін пайдаланып, фотосинтез арқылы қорек түзеді.'],
+['🫁','Жаратылыстану','Адам ағзасы','Адам ағзасы көптеген мүшелер мен жүйелерден тұрады.'],
+['🔋','Жаратылыстану','Энергия','Энергия — жұмыс істеу және қозғалыс жасау қабілеті.'],
+['💧','Жаратылыстану','Судың айналымы','Су буланып, бұлтқа айналып, кейін жауын-шашын ретінде жерге қайта түседі.']
+];
+let pts=+localStorage.getItem('qbPts')||125,dn=+localStorage.getItem('qbDone')||24;
+function render(){document.querySelectorAll('.points').forEach(x=>x.textContent=pts);document.querySelectorAll('.done').forEach(x=>x.textContent=dn)}render();
+function go(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0)}
+function renderLessons(data=lessons){lessonCount.textContent=data.length;lessonList.innerHTML=data.map((x,i)=>`<button class="lesson-card" onclick="openLesson(${lessons.indexOf(x)})"><span class="badge">${x[1]} • 3–5 мин</span><h3>${x[0]} ${x[2]}</h3><p>${x[3].slice(0,95)}...</p></button>`).join('')}
+renderLessons();
+function filterSubject(s){go('lessons');renderLessons(lessons.filter(x=>x[1]===s))}
+function modal(t,x){mtitle.textContent=t;mtext.textContent=x;document.getElementById('modal').style.display='flex'}function closeModal(){modalEl.style.display='none'}let modalEl=document.getElementById('modal');
+function openLesson(i){let x=lessons[i];modal(x[2],x[3])}
+function finishLesson(){pts+=10;dn++;localStorage.setItem('qbPts',pts);localStorage.setItem('qbDone',dn);render();modalEl.style.display='none';alert('🎉 Жарайсың! +10 ұпай алдың!')}
+function searchLessons(){let q=search.value.toLowerCase().trim();let found=lessons.filter(x=>(x[1]+' '+x[2]).toLowerCase().includes(q));searchResults.innerHTML=q?(found.length?found.slice(0,6).map(x=>`<button onclick="selectSearch(${lessons.indexOf(x)})">${x[0]} <b>${x[2]}</b> — ${x[1]}</button>`).join(''):'Ештеңе табылмады'):'';searchResults.style.display=q?'block':'none'}
+function selectSearch(i){search.value='';searchResults.style.display='none';go('lessons');renderLessons([lessons[i]]);openLesson(i)}
+const questions=[
+['Компьютердің негізгі ақпаратты өңдейтін құрылғысы?',['Монитор','Процессор','Пернетақта'],1],
+['Жасанды интеллект дегеніміз не?',['Компьютердің үйрену технологиясы','Тек ойын','Принтер'],0],
+['100 санының 20%-ы неше?',['20','50','10'],0],
+['Компьютерлік желі не үшін қажет?',['Ақпарат алмасу үшін','Тек сурет салу үшін','Тек музыка тыңдау үшін'],0],
+['Зат есім нені білдіреді?',['Заттың атын','Қимылды','Санды'],0],
+['Үшбұрыштың неше қабырғасы бар?',['2','3','4'],1],
+['Жер шарындағы ең үлкен су айдыны?',['Өзен','Көл','Мұхит'],2],
+['Заттың неше негізгі күйі бар?',['3','1','5'],0],
+['Киберқауіпсіздік не үшін қажет?',['Ақпаратты қорғау үшін','Экранды үлкейту үшін','Пернетақта бояу үшін'],0],
+['Сөйлем неден басталады?',['Кіші әріптен','Бас әріптен','Саннан'],1]
+];let qi=0,scoreN=0,answered=false;
+function loadQ(){let q=questions[qi];qtitle.textContent=`${qi+1}-сұрақ / ${questions.length}`;question.textContent=q[0];answers.innerHTML='';q[1].forEach((a,i)=>{let b=document.createElement('button');b.textContent=a;b.onclick=()=>check(i);answers.appendChild(b)});testResult.textContent='';answered=false}
+function check(i){if(answered)return;answered=true;if(i===questions[qi][2]){testResult.textContent='🎉 Дұрыс жауап! +5 ұпай';scoreN++;pts+=5;localStorage.setItem('qbPts',pts);render()}else testResult.textContent='❌ Дұрыс емес. Дұрыс жауап келесі сұрақта көрсетіледі.';score.textContent=scoreN}
+function nextQuestion(){if(!answered){testResult.textContent='Алдымен бір жауап таңдаңыз!';return}qi=(qi+1)%questions.length;loadQ()}loadQ();
+let cardIndex=0,flipped=false;function showCard(){let x=lessons[cardIndex];flash.innerHTML=flipped?`<b>Жауап:</b><p>${x[3]}</p><button class="purple" onclick="flip()">Сұраққа оралу</button> <button class="purple" onclick="nextCard()">Келесі карточка →</button>`:`<b>${x[1]} карточкасы</b><p>${x[2]} дегеніміз не?</p><button class="purple" onclick="flip()">Жауабын көру</button>`}function flip(){flipped=!flipped;showCard()}function nextCard(){cardIndex=(cardIndex+1)%lessons.length;flipped=false;showCard()}showCard();
+</script></body></html>
